@@ -3,6 +3,7 @@
   <head>
     <title>Johans enhörningsdatabas</title>
     <meta charset="UTF-8" />
+    <link href="./static/output.css" rel="stylesheet" />
     <style type="text/css">
       table {
         border-spacing: 10px;
@@ -33,7 +34,7 @@
     </style>
   </head>
   <body>
-    <h1>Johans enhörningsdatabas</h1>
+    <h1 class="text-blue-500">Johans enhörningsdatabas</h1>
     <table>
       <tr>
         <td id="list">
@@ -162,7 +163,6 @@
       }
 
       async function postUnicorn() {
-        
         const unicorn = buildUnicorn("newUnicorn");
 
         const options = {

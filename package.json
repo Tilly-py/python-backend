@@ -1,0 +1,24 @@
+{
+  "name": "python-backend",
+  "version": "1.0.0",
+  "description": "This project is a simple example of a Python application accessing a SQLite database. There is ABSOLUTELY NO WAY you should run this in a real project, as it is really, really insecure. Just don't do it. Learn from it, but that's all.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tilly-py/python-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tilly-py/python-backend/issues"
+  },
+  "homepage": "https://github.com/Tilly-py/python-backend#readme",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.17",
+    "tailwindcss": "^4.1.17"
+  }
+}

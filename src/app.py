@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 from pydantic import BaseModel
-from unicorns import storage , Unicorn
+from unicorns import storage
+from unicorns.Unicorn import Unicorn
 from fastapi import FastAPI, Header
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 
 # class SpottedWhere(BaseModel):
@@ -21,6 +23,8 @@ from fastapi.middleware.cors import CORSMiddleware
 #     image: str
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 
 app.add_middleware(
 CORSMiddleware,
@@ -53,10 +57,13 @@ async def create_unicorn(unicorn: Unicorn):
     return {"message": "Unicorn created successfully", "unicorn": unicorn}
 
 @app.put("/{unicorn_id}")
-async def update_unicorn(unicorn_id: int):
-    unicorn = storage.fetch_unicorn(unicorn_id)
-    storage.update_unicorn(unicorn)
-    return {"message": "ok"}
+async def update_unicorn(unicorn_id: int, new_unicorn: Unicorn):
+    old_unicorn = storage.fetch_unicorn(unicorn_id)
+    if old_unicorn is None:
+        return {"message": "Unicorn not found"}
+    new_unicorn.id = unicorn_id
+    storage.update_unicorn(new_unicorn)
+
 
 
 @app.delete("/{unicorn_id}")
